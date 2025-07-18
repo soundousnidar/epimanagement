@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "z0qFnXGxurT7o9AsoTL7C9vdbiJb+3F6qoJxPG+lonA=",
+  "Source": "hse1backend",
+  "BasePath": "_content/hse1backend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

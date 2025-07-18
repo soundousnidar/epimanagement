@@ -1,0 +1,6 @@
+@hse1backend_HostAddress = http://localhost:5250
+
+GET {{hse1backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

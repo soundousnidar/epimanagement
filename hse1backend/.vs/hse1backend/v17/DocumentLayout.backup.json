@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\hp\\source\\repos\\hse1backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{41BB5C68-ACD8-4203-AC53-B25B82D2E111}|hse1backend\\hse1backend.csproj|c:\\users\\hp\\source\\repos\\hse1backend\\hse1backend\\hse1backend.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{41BB5C68-ACD8-4203-AC53-B25B82D2E111}|hse1backend\\hse1backend.csproj|solutionrelative:hse1backend\\hse1backend.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41BB5C68-ACD8-4203-AC53-B25B82D2E111}|hse1backend\\hse1backend.csproj|c:\\users\\hp\\source\\repos\\hse1backend\\hse1backend\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41BB5C68-ACD8-4203-AC53-B25B82D2E111}|hse1backend\\hse1backend.csproj|solutionrelative:hse1backend\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 191,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "hse1backend",
+              "DocumentMoniker": "C:\\Users\\hp\\source\\repos\\hse1backend\\hse1backend\\hse1backend.csproj",
+              "RelativeDocumentMoniker": "hse1backend\\hse1backend.csproj",
+              "ToolTip": "C:\\Users\\hp\\source\\repos\\hse1backend\\hse1backend\\hse1backend.csproj",
+              "RelativeToolTip": "hse1backend\\hse1backend.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-07-15T15:48:12.254Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\hp\\source\\repos\\hse1backend\\hse1backend\\Models\\User.cs",
+              "RelativeDocumentMoniker": "hse1backend\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\hp\\source\\repos\\hse1backend\\hse1backend\\Models\\User.cs",
+              "RelativeToolTip": "hse1backend\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-15T15:29:50.869Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 209,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:3:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
