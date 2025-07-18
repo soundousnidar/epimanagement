@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hp\\Desktop\\hse1\\hse1backend\\hse1backend\\hse1backend.csproj": {}
+    "C:\\Users\\hp\\Desktop\\epimanagement\\hse1backend\\hse1backend\\hse1backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hp\\Desktop\\hse1\\hse1backend\\hse1backend\\hse1backend.csproj": {
+    "C:\\Users\\hp\\Desktop\\epimanagement\\hse1backend\\hse1backend\\hse1backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hp\\Desktop\\hse1\\hse1backend\\hse1backend\\hse1backend.csproj",
+        "projectUniqueName": "C:\\Users\\hp\\Desktop\\epimanagement\\hse1backend\\hse1backend\\hse1backend.csproj",
         "projectName": "hse1backend",
-        "projectPath": "C:\\Users\\hp\\Desktop\\hse1\\hse1backend\\hse1backend\\hse1backend.csproj",
+        "projectPath": "C:\\Users\\hp\\Desktop\\epimanagement\\hse1backend\\hse1backend\\hse1backend.csproj",
         "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hp\\Desktop\\hse1\\hse1backend\\hse1backend\\obj\\",
+        "outputPath": "C:\\Users\\hp\\Desktop\\epimanagement\\hse1backend\\hse1backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

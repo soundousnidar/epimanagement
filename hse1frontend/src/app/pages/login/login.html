@@ -1,0 +1,26 @@
+<div id="login-center-wrapper">
+  <div class="login-card">
+    <div class="login-card-left">
+      <img src="/assets/login.png" alt="Login" />
+    </div>
+    <div class="login-card-right">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h2>Welcome</h2>
+        <div class="input-group">
+          <span class="icon">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path d="M10 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 2c-4.418 0-8 1.79-8 4v2h16v-2c0-2.21-3.582-4-8-4z"/></svg>
+          </span>
+          <input formControlName="usernameOrEmail" placeholder="TE Connectivity ID or Email" required />
+        </div>
+        <div class="input-group">
+          <span class="icon">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a4 4 0 0 0-4 4v2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-1V6a4 4 0 0 0-4-4zm-2 6V6a2 2 0 1 1 4 0v2H8zm-3 2h10v6H5v-6z"/></svg>
+          </span>
+          <input formControlName="password" type="password" placeholder="Password" required />
+        </div>
+        <button type="submit">Sign In</button>
+        <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+      </form>
+    </div>
+  </div>
+</div>
