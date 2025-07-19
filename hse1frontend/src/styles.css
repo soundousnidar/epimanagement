@@ -1,6 +1,9 @@
+@import 'primeicons/primeicons.css';
 /* You can add global styles to this file, and also import other style files */
 html, body {
     margin: 0;
     padding: 0;
-    overflow: hidden;
-  }
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+}

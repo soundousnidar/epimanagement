@@ -5,12 +5,15 @@
   <main class="main-content">
     <div class="epi-container">
       <div class="epi-header">
-        <h1>Gestion des EPI</h1>
+        <h1>PPE Management</h1>
+      </div>
+      <div class="epi-toolbar">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Search PPE..." class="search-input">
         <button class="create-button" (click)="openCreateModal()">
           <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"/>
           </svg>
-          Créer un EPI
+          Create PPE
         </button>
       </div>
 
@@ -19,44 +22,43 @@
         {{ errorMessage }}
       </div>
 
-      <!-- Tableau des EPI -->
+      <!-- PPE Table -->
       <div class="epi-table-container">
         <div class="loading" *ngIf="loading && epis.length === 0">
-          Chargement des EPI...
+          Loading PPEs...
         </div>
         
         <div class="no-epis" *ngIf="!loading && epis.length === 0">
-          Aucun EPI trouvé. Créez votre premier EPI !
+          No PPE found. Create your first PPE!
         </div>
         
-        <table class="epi-table" *ngIf="epis.length > 0">
+        <table class="epi-table" *ngIf="filteredEpis.length > 0">
           <thead>
             <tr>
               <th>Image</th>
-              <th>Nom</th>
+              <th>Name</th>
               <th>Description</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let epi of epis">
+            <tr *ngFor="let epi of filteredEpis">
               <td class="image-cell">
-                <img [src]="getImageUrl(epi.imageUrl)" 
-                     [alt]="epi.name" 
+                <img *ngIf="epi && getImageUrl(epi.imageUrl)" [src]="getImageUrl(epi.imageUrl)" 
+                     [alt]="epi?.name" 
                      class="epi-image" 
-                     *ngIf="getImageUrl(epi.imageUrl)"
                      (error)="onImageError($event)">
-                <div class="no-image" *ngIf="!getImageUrl(epi.imageUrl)">Aucune image</div>
+                <div class="no-image" *ngIf="!epi || !getImageUrl(epi.imageUrl)">No image</div>
               </td>
-              <td class="name-cell">{{ epi.name }}</td>
-              <td class="description-cell">{{ epi.description }}</td>
+              <td class="name-cell">{{ epi?.name || '' }}</td>
+              <td class="description-cell">{{ epi?.description || '' }}</td>
               <td class="actions-cell">
-                <button class="edit-button" title="Modifier">
+                <button class="edit-button" title="Edit" (click)="openEditModal(epi)" *ngIf="epi">
                   <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
                   </svg>
                 </button>
-                <button class="delete-button" (click)="deleteEpi(epi.id!)" title="Supprimer">
+                <button class="delete-button" (click)="deleteEpi(epi.id!)" title="Delete" *ngIf="epi && epi.id">
                   <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/>
                   </svg>
@@ -70,11 +72,11 @@
   </main>
 </div>
 
-<!-- Modal de création d'EPI -->
+<!-- Create PPE Modal -->
 <div class="modal-overlay" *ngIf="showCreateModal" (click)="closeCreateModal()"></div>
 <div class="modal" *ngIf="showCreateModal">
   <div class="modal-header">
-    <h2>Créer un nouvel EPI</h2>
+    <h2>Create a new PPE</h2>
     <button class="modal-close" (click)="closeCreateModal()">
       <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
         <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
@@ -84,19 +86,29 @@
   
   <form [formGroup]="epiForm" (ngSubmit)="onSubmit()" class="modal-body">
     <div class="form-group">
-      <label for="name">Nom de l'EPI *</label>
-      <input type="text" id="name" formControlName="name" placeholder="Ex: Casque de sécurité">
+      <label for="name">PPE Name *</label>
+      <input type="text" id="name" formControlName="name" placeholder="Ex: Safety helmet">
     </div>
     
     <div class="form-group">
       <label for="description">Description *</label>
-      <textarea id="description" formControlName="description" rows="3" placeholder="Description détaillée de l'EPI"></textarea>
+      <textarea id="description" formControlName="description" rows="3" placeholder="Detailed description of the PPE"></textarea>
     </div>
     
     <div class="form-group">
       <label for="image">Image</label>
       <div class="file-upload">
-        <input type="file" id="image" (change)="onFileSelected($event)" accept="image/*">
+        <div *ngIf="selectedFile" class="current-image-preview">
+          <img [src]="selectedFile ? (selectedFile | filePreview) : ''" alt="Aperçu de l'image" style="max-width: 120px; max-height: 120px; display: block; margin-bottom: 8px; border-radius: 8px; border: 1px solid #ccc;" />
+          <button type="button" (click)="removeCreateImage()" class="icon-button" style="margin-bottom: 8px;">
+            <i class="pi pi-trash"></i>
+          </button>
+        </div>
+        <label class="icon-upload-label">
+          <i class="pi pi-upload"></i>
+          <span style="margin-left: 6px; font-size: 0.98em; color: #ff8302; font-weight: 500;">Upload PPE image</span>
+          <input type="file" id="image" (change)="onFileSelected($event)" accept="image/*" style="display:none;">
+        </label>
         <div class="file-upload-info" *ngIf="selectedFile">
           <span class="file-name">{{ selectedFile.name }}</span>
           <span class="file-size">({{ (selectedFile.size / 1024).toFixed(1) }} KB)</span>
@@ -106,11 +118,63 @@
     
     <div class="modal-actions">
       <button type="button" (click)="closeCreateModal()" class="cancel-button">
-        Annuler
+        Cancel
       </button>
       <button type="submit" [disabled]="loading || epiForm.invalid" class="submit-button">
-        <span *ngIf="loading">Création...</span>
-        <span *ngIf="!loading">Créer l'EPI</span>
+        <span *ngIf="loading">Creating...</span>
+        <span *ngIf="!loading">Create PPE</span>
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- Edit PPE Modal -->
+<div class="modal-overlay" *ngIf="showEditModal" (click)="closeEditModal()"></div>
+<div class="modal" *ngIf="showEditModal">
+  <div class="modal-header">
+    <h2>Edit PPE</h2>
+    <button class="modal-close" (click)="closeEditModal()">
+      <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+      </svg>
+    </button>
+  </div>
+  <form [formGroup]="editEpiForm" (ngSubmit)="onEditSubmit()" class="modal-body">
+    <div class="form-group">
+      <label for="edit-name">PPE Name *</label>
+      <input type="text" id="edit-name" formControlName="name" placeholder="Ex: Safety helmet">
+    </div>
+    <div class="form-group">
+      <label for="edit-description">Description *</label>
+      <textarea id="edit-description" formControlName="description" rows="3" placeholder="Detailed description of the PPE"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="edit-image">Image</label>
+      <div class="file-upload">
+        <div *ngIf="editEpiForm.value.imageUrl && getImageUrl(editEpiForm.value.imageUrl) && !editSelectedFile" class="current-image-preview">
+          <img [src]="getImageUrl(editEpiForm.value.imageUrl)" alt="Image actuelle" style="max-width: 120px; max-height: 120px; display: block; margin-bottom: 8px; border-radius: 8px; border: 1px solid #ccc;" />
+          <button type="button" (click)="removeEditImage()" class="icon-button" style="margin-bottom: 8px;">
+            <i class="pi pi-trash"></i>
+          </button>
+        </div>
+        <label class="icon-upload-label" *ngIf="!editEpiForm.value.imageUrl || editSelectedFile">
+          <i class="pi pi-upload"></i>
+          <span style="margin-left: 6px; font-size: 0.98em; color: #ff8302; font-weight: 500;">Upload PPE image</span>
+          <input type="file" id="edit-image" (change)="onEditFileSelected($event)" accept="image/*" style="display:none;">
+        </label>
+        <div class="file-upload-info" *ngIf="editSelectedFile">
+          <span class="file-name">{{ editSelectedFile.name }}</span>
+          <span class="file-size">({{ (editSelectedFile.size / 1024).toFixed(1) }} KB)</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button type="button" (click)="closeEditModal()" class="cancel-button">
+        Cancel
+      </button>
+      <button type="submit" [disabled]="loading || editEpiForm.invalid" class="submit-button">
+        <span *ngIf="loading">Saving...</span>
+        <span *ngIf="!loading">Save</span>
       </button>
     </div>
   </form>
