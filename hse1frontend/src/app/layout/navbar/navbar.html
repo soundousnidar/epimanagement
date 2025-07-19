@@ -1,0 +1,25 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-left">
+      <button class="menu-button" (click)="toggleSidebar()" aria-label="Toggle sidebar">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+        </svg>
+      </button>
+      <div class="logo-container">
+        <img src="/assets/logo.png" alt="EPI Management Logo" class="logo">
+      </div>
+    </div>
+    <div class="navbar-right">
+      <div class="user-info">
+        <button class="logout-link" (click)="logout()" aria-label="Logout">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5z"/>
+            <path d="M4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+          </svg>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>

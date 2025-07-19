@@ -1,0 +1,399 @@
+.epi-layout {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.main-content {
+  padding-top: 70px;
+  min-height: calc(100vh - 70px);
+}
+
+.epi-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.epi-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.epi-header h1 {
+  color: #333;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', 'Arial', sans-serif;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+.create-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ff8302;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.create-button:hover {
+  background-color: #e67602;
+}
+
+/* Messages */
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid #f5c6cb;
+}
+
+.loading,
+.no-epis {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+  font-size: 18px;
+}
+
+/* Tableau */
+.epi-table-container {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.epi-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.epi-table th {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.epi-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: middle;
+}
+
+.epi-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+.image-cell {
+  width: 100px;
+}
+
+.epi-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+}
+
+.no-image {
+  color: #999;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.name-cell {
+  font-weight: 600;
+  color: #333;
+}
+
+.description-cell {
+  color: #666;
+  max-width: 300px;
+}
+
+.actions-cell {
+  width: 120px;
+  text-align: center;
+}
+
+.edit-button,
+.delete-button {
+  background: none;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 0 4px;
+  transition: background-color 0.2s ease;
+}
+
+.edit-button {
+  color: #007bff;
+}
+
+.edit-button:hover {
+  background-color: #e3f2fd;
+}
+
+.delete-button {
+  color: #dc3545;
+}
+
+.delete-button:hover {
+  background-color: #f8d7da;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: modalSlideIn 0.3s ease-out;
+  z-index: 10000;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  color: #666;
+  transition: background-color 0.2s ease;
+}
+
+.modal-close:hover {
+  background-color: #f0f0f0;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #ff8302;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.file-upload {
+  position: relative;
+}
+
+.file-upload input[type="file"] {
+  padding: 8px;
+  border: 2px dashed #e0e0e0;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.file-upload input[type="file"]:hover {
+  border-color: #ff8302;
+}
+
+.file-upload-info {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background-color: #e3f2fd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.file-name {
+  font-weight: 500;
+  color: #1976d2;
+}
+
+.file-size {
+  color: #666;
+  margin-left: 0.5rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.submit-button {
+  background-color: #ff8302;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-button:hover:not(:disabled) {
+  background-color: #e67602;
+}
+
+.submit-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.cancel-button {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cancel-button:hover {
+  background-color: #5a6268;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .epi-container {
+    padding: 1rem;
+  }
+  
+  .epi-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .epi-header h1 {
+    font-size: 2rem;
+  }
+  
+  .modal {
+    width: 95%;
+    margin: 1rem;
+  }
+  
+  .modal-header,
+  .modal-body {
+    padding: 1rem;
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+  }
+  
+  .epi-table {
+    font-size: 14px;
+  }
+  
+  .epi-table th,
+  .epi-table td {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .description-cell {
+    max-width: 200px;
+  }
+  
+  .epi-image {
+    width: 50px;
+    height: 50px;
+  }
+}

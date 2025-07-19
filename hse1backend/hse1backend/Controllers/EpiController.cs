@@ -81,7 +81,7 @@ namespace hse1backend.Controllers
         [HttpPost("upload-image")]
         [Authorize(Roles = "Admin")]
         [Consumes("multipart/form-data")]
-        public async Task<ActionResult<string>> UploadImage([FromForm] EpiImageUploadRequest request)
+        public async Task<IActionResult> UploadImage([FromForm] EpiImageUploadRequest request)
         {
             var file = request.File;
             if (file == null || file.Length == 0)
@@ -100,7 +100,7 @@ namespace hse1backend.Controllers
             }
 
             var relativePath = Path.Combine("media", "epis", fileName).Replace("\\", "/");
-            return Ok(relativePath);
+            return Content(relativePath, "text/plain");
         }
 
         private bool EpiExists(int id) => _context.Epis.Any(e => e.Id == id);

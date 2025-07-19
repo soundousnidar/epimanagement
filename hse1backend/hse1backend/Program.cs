@@ -80,6 +80,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// Configuration des fichiers statiques pour le dossier media
+app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "media")),
+    RequestPath = "/media"
+});
+
 app.UseAuthentication();
 // Activer CORS juste après l'authentification
 app.UseCors();
